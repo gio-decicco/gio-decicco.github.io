@@ -53,89 +53,86 @@
     </div>
 
     <script>
-        const commands = [
-            { command: "who am i", output: "Giovanni Decicco Ominetti" },
-            { command: "where am i", output: "Villa del Rosario, Córdoba, Argentina" },
-            { command: "when i was born", output: "27-10-2001 08:15:00" },
-            { command: "cat about.txt", output: "<p>Soy un apasionado desarrollador con experiencia en el desarrollo de aplicaciónes web, móviles y de escritorio.</p>" +
+const commands = [
+    { command: "who am i", output: "Giovanni Decicco Ominetti" },
+    { command: "where am i", output: "Villa del Rosario, Córdoba, Argentina" },
+    { command: "when i was born", output: "27-10-2001 08:15:00" },
+    { command: "cat about.txt", output: "<p>I am a passionate developer with experience in web, mobile, and desktop application development.</p>" +
+        "<p>Currently, I am focusing on web application development with the Angular-.NET Core stack.</p>" +
+        "<p>I am currently self-teaching technologies such as Linux, Docker, Kubernetes, and Terraform to further my career in software infrastructure.</p>"
+    },
+    { command: "ls job-history/", output: "evoltis/  coovilros/  banco-roela-sa/" },
+    { 
+        command: "cat evoltis/description.txt", 
+        output: `
+        <div class='experience-box'>
+            <strong>Full-Stack Ssr Developer (November 2024 - Today)</strong>
+            <ul>
+                <li>Web application development with the Angular-.NET Core stack.</li>
+                <li>Database maintenance in MySQL.</li>
+            </ul>
 
-                "<p>Actualmente me encuentro en el desarrollo de aplicaciones web con el stack Angular-.NET Core.</p>" +
+            <p>Featured Technologies</p>
+            <ul>
+                <li>Frontend: Angular with tools like NX, PrimeNG, Ngrx.</li>
+                <li>Backend: .NET Core and Entity Framework Core with patterns like: Strategy, Factory, Dependency Injection, Clean Architecture.</li>
+                <li>Management: Office Ecosystem, Jira, Bitbucket.</li>
+            </ul>
+        </div>`
+    },
+    { 
+        command: "cat coovilros/description.txt", 
+        output: `
+        <div class='experience-box'>
+            <strong>Full-Stack Developer (May 2024 - November 2024)</strong>
+            <ul>
+                <li>Development of web, mobile (Android), and desktop (Multiplatform) applications.</li>
+                <li>Database maintenance in SQL Server and PostgreSQL.</li>
+            </ul>
 
-                "<p>Actualmente estoy centrando mi formación autodidacta en tecnologías como Linux, Docker, Kubernetes y Terraform para en un futuro poder desarrollarme profesionalmente en el campo de la infraestructura de software.</p>"
+            <p>Featured Technologies</p>
+            <ul>
+                <li>Frontend: Angular with Ngrx, Kotlin and Java, Lazarus Forms</li>
+                <li>Backend: .NET Core and Entity Framework Core.</li>
+                <li>Management: Google Ecosystem, MantisBT, Github, and SVN.</li>
+            </ul>
+        </div>`
+    },
+    { 
+        command: "cat banco-roela-sa/description.txt", 
+        output: `
+        <div class='experience-box'>
+            <strong>QA Tester (April 2023 - December 2023)</strong>
+            <ul>
+                <li>Manual and automated testing.</li>
+                <li>Error reporting and follow-up.</li>
+                <li>Software requirement validation.</li>
+            </ul>
 
-             },
-            { command: "ls experiencia-laboral/", output: "evoltis/  coovilros/  banco-roela-sa/" },
-            { 
-                command: "cat evoltis/descripcion.txt", 
-                output: `
-                <div class='experience-box'>
-                    <strong>Full-Stack Ssr Developer (Noviembre 2024 - Actualidad)</strong>
-                    <ul>
-                        <li>Desarrollo de aplicaciones web con el stack Angular-.NET Core.</li>
-                        <li>Mantenimiento de bases de datos en MySQL.</li>
-                    </ul>
+            <p>Featured Technologies</p>
+            <ul>
+                <li>Zephyr Scale for Jira (Frontend manual testing)</li>
+                <li>Postman and SwaggerUI (Backend manual testing)</li>
+            </ul>
+        </div>`
+    },
+    { command: "ls formation/", output: "tup-utn/" },
+    { 
+        command: "cat tup-utn/description.txt", 
+        output: `
+        <div class='experience-box'>
+            <strong>Technicature in Programming (January 2022 - August 2024)</strong>
 
-                    <p>Tecnologías destacadas</p>
-                    <ul>
-                        <li>Frontend: Angular con complementos como NX, PrimeNG, Ngrx.</li>
-                        <li>Backend: .NET Core y Entity Framework Core con patrones como: Strategy, Factory, Inyección de dependencias, Clean Architecture.</li>
-                        <li>Gestiones: Ecosistema Office, Jira, Bitbucket.</li>
-                    </ul>
-                </div>`
-            },
-            { 
-                command: "cat coovilros/descripcion.txt", 
-                output: `
-                <div class='experience-box'>
-                    <strong>Full-Stack Developer (Mayo 2024 - Noviembre 2024)</strong>
-                    <ul>
-                        <li>Desarrollo de aplicaciones web, móviles (Android) y escritorio (Multiplataforma).</li>
-                        <li>Mantenimiento de bases de datos SQL Server y PostgreSQL.</li>
-                    </ul>
-
-                    <p>Tecnologías destacadas</p>
-                    <ul>
-                        <li>Frontend: Angular con Ngrx, Kotlin y Java, Lazarus Forms</li>
-                        <li>Backend: .NET Core y Entity Framework Core.</li>
-                        <li>Gestiones: Ecosistema Google, MantisBT, Github y SVN.</li>
-                    </ul>
-                </div>`
-            },
-            { 
-                command: "cat banco-roela-sa/descripcion.txt", 
-                output: `
-                <div class='experience-box'>
-                    <strong>QA Tester (Abril 2023 - Diciembre 2023)</strong>
-                    <ul>
-                        <li>Pruebas manuales y automatizadas.</li>
-                        <li>Reportes de errores y seguimiento.</li>
-                        <li>Validación de requisitos de software.</li>
-                    </ul>
-
-                    <p>Tecnologías destacadas</p>
-                    <ul>
-                        <li>Zephyr Scale for Jira (Pruebas manuales de frontend)</li>
-                        <li>Postman y SwaggerUI (Pruebas manuales de backend)</li>
-                    </ul>
-                </div>`
-            },
-            { command: "ls formacion/", output: "tup-utn/" },
-            { 
-                command: "cat tup-utn/descripcion.txt", 
-                output: `
-                <div class='experience-box'>
-                    <strong>Tecnicatura Universitaria en Programación (Enero 2022 - Agosto 2024)</strong>
-
-                    <p>Tecnologías destacadas</p>
-                    <ul>
-                        <li>.NET</li>
-                        <li>Spring Boot</li>
-                        <li>Angular</li>
-                    </ul>
-                </div>`
-            },
-            { command: "cat contact.txt", output: "Puedes contactarme en: <a href='mailto:giovannideciccoominetti@gmail.com' style='color: #09ff00;'>giovannideciccoominetti@gmail.com</a><br>Teléfono: <span style='color: #09ff00;'>+54 9 351 6510318</span>" },
-        ];
+            <p>Featured Technologies</p>
+            <ul>
+                <li>.NET</li>
+                <li>Spring Boot</li>
+                <li>Angular</li>
+            </ul>
+        </div>`
+    },
+    { command: "cat contact.txt", output: "You can contact me at: <a href='mailto:giovannideciccoominetti@gmail.com' style='color: #09ff00;'>giovannideciccoominetti@gmail.com</a><br>Phone: <span style='color: #09ff00;'>+54 9 351 6510318</span>" },
+];
 
         const terminalContent = document.getElementById("terminal-content");
 
