@@ -53,9 +53,16 @@
 
     <script>
         const commands = [
-            { command: "whoami", output: "Giovanni Decicco Ominetti" },
-            { command: "whereami", output: "Villa del Rosario, Córdoba, Argentina" },
-            { command: "cat about.txt", output: "Soy un apasionado desarrollador con experiencia en el desarrollo de aplicaciónes web, móviles y de escritorio." },
+            { command: "who am i", output: "Giovanni Decicco Ominetti" },
+            { command: "where am i", output: "Villa del Rosario, Córdoba, Argentina" },
+            { command: "when i was born", output: "27-10-2001 08:15:00" },
+            { command: "cat about.txt", output: "<p>Soy un apasionado desarrollador con experiencia en el desarrollo de aplicaciónes web, móviles y de escritorio.</p>" +
+
+                "<p>Actualmente me encuentro en el desarrollo de aplicaciones web con el stack Angular-.NET Core.</p>" +
+
+                "<p>Actualmente estoy centrando mi formación autodidacta en tecnologías como Linux, Docker, Kubernetes y Terraform para en un futuro poder desarrollarme profesionalmente en el campo de la infraestructura de software.</p>"
+
+             },
             { command: "ls experiencia-laboral/", output: "evoltis/  coovilros/  banco-roela-sa/" },
             { 
                 command: "cat evoltis/descripcion.txt", 
@@ -111,6 +118,21 @@
                     </ul>
                 </div>`
             },
+            { command: "ls formacion/", output: "tup-utn/" },
+            { 
+                command: "cat tup-utn/descripcion.txt", 
+                output: `
+                <div class='experience-box'>
+                    <strong>Tecnicatura Universitaria en Programación (Enero 2022 - Agosto 2024)</strong>
+
+                    <p>Tecnologías destacadas</p>
+                    <ul>
+                        <li>.NET</li>
+                        <li>Spring Boot</li>
+                        <li>Angular</li>
+                    </ul>
+                </div>`
+            },
             { command: "cat contact.txt", output: "Puedes contactarme en: <a href='mailto:giovannideciccoominetti@gmail.com' style='color: #09ff00;'>giovannideciccoominetti@gmail.com</a><br>Teléfono: <span style='color: #09ff00;'>+54 9 351 6510318</span>" },
         ];
 
@@ -142,7 +164,7 @@
                 commandLine.className = "command";
                 terminalContent.appendChild(commandLine);
                 
-                typeText(commandLine, `$ ${cmd.command}`, 100, () => {
+                typeText(commandLine, `$ ${cmd.command}`, 50, () => {
                     const outputLine = document.createElement("p");
                     outputLine.className = "output";
                     terminalContent.appendChild(outputLine);
