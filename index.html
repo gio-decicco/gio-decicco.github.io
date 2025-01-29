@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gio - Portfolio</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #09ff00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .command {
+            color: #09ff00;
+        }
+        .output {
+            color: #ffffff;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #09ff00;
+            animation: blink 1s steps(2, start) infinite;
+        }
+        .experience-box {
+            border-left: 2px solid #09ff00;
+            padding-left: 10px;
+            margin-top: 5px;
+            color: #ffffff;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <h1>Giovanni Decicco Ominetti - Portfolio</h1>
+        <hr>
+        <div id="terminal-content"></div>
+        <div class="prompt">
+            <!-- $ <span id="cursor" class="cursor"></span> -->
+        </div>
+    </div>
+
+    <script>
+        const commands = [
+            { command: "whoami", output: "Giovanni Decicco Ominetti" },
+            { command: "whereami", output: "Villa del Rosario, Córdoba, Argentina" },
+            { command: "cat about.txt", output: "Soy un apasionado desarrollador con experiencia en el desarrollo de aplicaciónes web, móviles y de escritorio." },
+            { command: "ls experiencia-laboral/", output: "evoltis/  coovilros/  banco-roela-sa/" },
+            { 
+                command: "cat evoltis/descripcion.txt", 
+                output: `
+                <div class='experience-box'>
+                    <strong>Full-Stack Ssr Developer (Noviembre 2024 - Actualidad)</strong>
+                    <ul>
+                        <li>Desarrollo de aplicaciones web con el stack Angular-.NET Core.</li>
+                        <li>Mantenimiento de bases de datos en MySQL.</li>
+                    </ul>
+
+                    <p>Tecnologías destacadas</p>
+                    <ul>
+                        <li>Frontend: Angular con complementos como NX, PrimeNG, Ngrx.</li>
+                        <li>Backend: .NET Core y Entity Framework Core con patrones como: Strategy, Factory, Inyección de dependencias, Clean Architecture.</li>
+                        <li>Gestiones: Ecosistema Office, Jira, Bitbucket.</li>
+                    </ul>
+                </div>`
+            },
+            { 
+                command: "cat coovilros/descripcion.txt", 
+                output: `
+                <div class='experience-box'>
+                    <strong>Full-Stack Developer (Mayo 2024 - Noviembre 2024)</strong>
+                    <ul>
+                        <li>Desarrollo de aplicaciones web, móviles (Android) y escritorio (Multiplataforma).</li>
+                        <li>Mantenimiento de bases de datos SQL Server y PostgreSQL.</li>
+                    </ul>
+
+                    <p>Tecnologías destacadas</p>
+                    <ul>
+                        <li>Frontend: Angular con Ngrx, Kotlin y Java, Lazarus Forms</li>
+                        <li>Backend: .NET Core y Entity Framework Core.</li>
+                        <li>Gestiones: Ecosistema Google, MantisBT, Github y SVN.</li>
+                    </ul>
+                </div>`
+            },
+            { 
+                command: "cat banco-roela-sa/descripcion.txt", 
+                output: `
+                <div class='experience-box'>
+                    <strong>QA Tester (Abril 2023 - Diciembre 2023)</strong>
+                    <ul>
+                        <li>Pruebas manuales y automatizadas.</li>
+                        <li>Reportes de errores y seguimiento.</li>
+                        <li>Validación de requisitos de software.</li>
+                    </ul>
+
+                    <p>Tecnologías destacadas</p>
+                    <ul>
+                        <li>Zephyr Scale for Jira (Pruebas manuales de frontend)</li>
+                        <li>Postman y SwaggerUI (Pruebas manuales de backend)</li>
+                    </ul>
+                </div>`
+            },
+            { command: "cat contact.txt", output: "Puedes contactarme en: <a href='mailto:giovannideciccoominetti@gmail.com' style='color: #09ff00;'>giovannideciccoominetti@gmail.com</a><br>Teléfono: <span style='color: #09ff00;'>+54 9 351 6510318</span>" },
+        ];
+
+        const terminalContent = document.getElementById("terminal-content");
+
+        function typeText(element, text, speed, callback) {
+            let i = 0;
+            const cursor = document.createElement("span");
+            cursor.className = "cursor";
+            element.appendChild(cursor);
+            
+            function type() {
+                if (i < text.length) {
+                    element.insertBefore(document.createTextNode(text.charAt(i)), cursor);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.removeChild(cursor);
+                    if (callback) callback();
+                }
+            }
+            type();
+        }
+
+        function showCommands(index) {
+            if (index < commands.length) {
+                const cmd = commands[index];
+                const commandLine = document.createElement("p");
+                commandLine.className = "command";
+                terminalContent.appendChild(commandLine);
+                
+                typeText(commandLine, `$ ${cmd.command}`, 100, () => {
+                    const outputLine = document.createElement("p");
+                    outputLine.className = "output";
+                    terminalContent.appendChild(outputLine);
+                    
+                    outputLine.innerHTML = cmd.output;
+                    setTimeout(() => {
+                        showCommands(index + 1);
+                    }, 500);
+                });
+            }
+        }
+
+        showCommands(0);
+    </script>
+</body>
+</html>
