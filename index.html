@@ -162,9 +162,10 @@ const commands = [
                 commandLine.className = "command";
                 terminalContent.appendChild(commandLine);
                 
-                typeText(commandLine, `$ ${cmd.command}`, 50, () => {
+                typeText(commandLine, `$ ${cmd.command}`, 100, () => {
                     const outputLine = document.createElement("p");
                     outputLine.className = "output";
+
                     terminalContent.appendChild(outputLine);
                     
                     outputLine.innerHTML = cmd.output;
